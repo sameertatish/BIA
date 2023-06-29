@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Results</title>
+  <style>
+    body {
+      background-color: #cd3535;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    button {
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff1c1c;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    h2 {
+      color: white;
+      margin-left: 0px;
+    }
+
+    pre {
+      color: white;
+      font-size: large;
+      margin-left: 0px;
+      border: 2px solid black;
+      padding: 10px;
+      white-space: pre-wrap;
+      display: inline-block;
+      
+    }
+    
+    #footer {
+      position: fixed;
+      padding: 10px 10px 0px 10px;
+      bottom: 0;
+      width: 100%;
+      /* Height of the footer*/
+      height: 40px;
+      background-color: #cd3535;
+  }
+  </style>
+</head>
+<body>
+  <h1>Results</h1>
+  <form action="{% url 'save_all_results' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Save All Results</button>
+  </form>
+
+  <form action="{% url 'show_best_result' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Show Best Result</button>
+  </form>
+
+  {% if optimal_results %}
+    <h2>Optimal Results</h2>
+    <pre>{{ optimal_results }}</pre>
+  {% endif %}
+
+  {% if all_results %}
+    <h2>All Results</h2>
+    <pre>{{ all_results }}</pre>
+  {% endif %}
+  
+</body>
+<div id="footer">
+  Assia_123508 - Haneen_129117 - Rawan_118839 - Samier_130262
+</footer></html>
